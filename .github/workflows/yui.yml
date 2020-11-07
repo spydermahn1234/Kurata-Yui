@@ -58,7 +58,7 @@ jobs:
               echo "bot-token=${{ secrets.TOKEN }}" >> "config.prop"
               echo "bot-username=chikatto" >> "config.prop"
               echo "bot-master=946757865" >> "config.prop"
-              echo "bot-submaster=918317361" >> "config.prop"
+              #echo "bot-submaster=918317361" >> "config.prop"
               echo "bot-sf-pass=${{ secrets.PASSWORD }}" >> sf-creds.config
               echo "bot-sf-proj=trebleexperience" >> sf-creds.config
               echo "bot-sf-user=pything" >> sf-creds.config
