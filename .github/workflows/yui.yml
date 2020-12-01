@@ -27,7 +27,7 @@ jobs:
          continue-on-error: true
          timeout-minutes: 10
          run: |
-              git clone --recurse-submodules https://github.com/Treble-Experience/ErfanGSIs-VelanGSIs ErfanGSIs
+              git clone --recurse-submodules https://github.com/YuMiGSIs/ErfanGSIs-VelanGSIs ErfanGSIs
               cd Erf*; sudo bash setup.sh
               sudo rm -rf /usr/share/dotnet/
               sudo rm -rf "/usr/local/share/boost"
@@ -56,14 +56,15 @@ jobs:
               cd configs
               touch config.prop
               echo "bot-token=${{ secrets.TOKEN }}" >> "config.prop"
-              echo "bot-username=zskyd" >> "config.prop"
+              echo "bot-username=mitsukinasebot" >> "config.prop"
               echo "bot-master=946757865" >> "config.prop"
-              echo "bot-sf-pass=${{ secrets.PASSWORD }}" >> sf-creds.config
+              echo "bot-sf-pass=${{ secrets.SF_PASS }}" >> sf-creds.config
               echo "bot-sf-proj=yumi-project" >> sf-creds.config
               echo "bot-sf-user=pything" >> sf-creds.config
               echo "bot-announcement-id=-1001179583442" >> sf-creds.config
               echo "bot-sf-host=frs.sourceforge.net" >> sf-creds.config
               echo "bot-send-announcement=true" >> sf-creds.config
+              echo '["918317361","1377656271","968189873","1263663104"]' >> allowed2port.json
              
        - name: Run Bot3
          continue-on-error: true
@@ -75,10 +76,9 @@ jobs:
          timeout-minutes: 1
          run: |
               cd tmp/Kurata-Yui
-              date=`date +%Y%m%d`
               echo "1" >> push.txt
               git add .
-              git commit -m "($date): Make a forced loop"
+              git commit -m "(LOOP): Make a forced loop"
               
        - name: Reruns
          continue-on-error: true
