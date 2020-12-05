@@ -7,7 +7,8 @@
 * Enable the Actions in repository.
 
 # Secrets: How to use:
-* ```PASSWORD```: Set password of your GitHub and SourceForge account (Both have to be equal)
+* ```PASSWORD```: Set password of your GitHub account
+* ```SF_PASS```: Set password of your SourceForge account
 * ```TOKEN```: Set token of your Telegram Bot
 
 # Yaml: How to use:
