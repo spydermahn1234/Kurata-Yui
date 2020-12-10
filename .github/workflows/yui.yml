@@ -1,4 +1,4 @@
-name: Running bot
+name: Running bot (Master 2)
  
 on: push
 
@@ -21,7 +21,7 @@ jobs:
               git config --global user.name "SkyYuko"
               git config --global user.email "secrets.EMAILGIT"
               mkdir tmp && cd tmp
-              git clone https://github.com/Kurata-Yui/Kurata-Yui Kurata-Yui
+              git clone https://github.com/Kurata-Yui/Kurata-Yui -b master-2 Kurata-Yui
 
        - name: Setup Erfan & Save Space
          continue-on-error: true
@@ -32,13 +32,13 @@ jobs:
               sudo rm -rf /usr/share/dotnet/
               sudo rm -rf "/usr/local/share/boost"
               sudo rm -rf "$AGENT_TOOLSDIRECTORY"
-              sudo apt-get remove -y '^ghc-8.*' '^dotnet-.*' '^llvm-.*' 'php.*' azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell mono-devel account-plugin-facebook account-plugin-flickr account-plugin-jabber account-plugin-salut account-plugin-twitter account-plugin-windows-live account-plugin-yahoo aisleriot brltty duplicity empathy empathy-common example-content gnome-accessibility-themes gnome-contacts gnome-mahjongg gnome-mines gnome-orca gnome-screensaver gnome-sudoku gnome-video-effects gnomine landscape-common libreoffice-avmedia-backend-gstreamer libreoffice-base-core libreoffice-calc libreoffice-common libreoffice-core libreoffice-draw libreoffice-gnome libreoffice-gtk libreoffice-impress libreoffice-math libreoffice-ogltrans libreoffice-pdfimport libreoffice-style-galaxy libreoffice-style-human libreoffice-writer libsane libsane-common mcp-account-manager-uoa python3-uno rhythmbox rhythmbox-plugins rhythmbox-plugin-zeitgeist sane-utils shotwell shotwell-common telepathy-gabble telepathy-haze telepathy-idle telepathy-indicator telepathy-logger telepathy-mission-control-5 telepathy-salut totem totem-common totem-plugins printer-driver-brlaser printer-driver-foo2zjs printer-driver-foo2zjs-common printer-driver-m2300w printer-driver-ptouch printer-driver-splix
+              sudo apt-get remove -y '^ghc-8.*' '^dotnet-.*' '^llvm-.*' 'php.*' azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell mono-devel account-plugin-facebook account-plugin-flickr account-plugin-jabber account-plugin-salut account-plugin-twitter account-plugin-windows-live account-plugin-yahoo aisleriot brltty duplicity empathy empathy-common example-content gnome-accessibility-themes gnome-contacts gnome-mahjongg gnome-mines gnome-orca gnome-screensaver gnome-sudoku gnome-video-effects gnomine landscape-common libreoffice-avmedia-backend-gstreamer libreoffice-base-core libreoffice-calc libreoffice-common libreoffice-core libreoffice-draw libreoffice-gnome libreoffice-gtk libreoffice-impress libreoffice-math libreoffice-ogltrans libreoffice-pdfimport libreoffice-style-galaxy libreoffice-style-human libreoffice-writer libsane libsane-common mcp-account-manager-uoa python3-uno rhythmbox rhythmbox-plugins rhythmbox-plugin-zeitgeist sane-utils shotwell shotwell-common telepathy-gabble telepathy-haze telepathy-idle telepathy-indicator telepathy-logger telepathy-mission-control-5 telepathy-salut totem totem-common totem-plugins printer-driver-brlaser printer-driver-foo2zjs printer-driver-foo2zjs-common printer-driver-m2300w printer-driver-ptouch printer-driver-splix zsh
 
        - name: Setup BoboBot
          continue-on-error: true
          timeout-minutes: 10
          run: |
-              git clone https://${{ secrets.USERNAME }}":${{ secrets.GITTOKEN }}"@github.com/Kurata-Yui/Bot3-Jar Bobo
+              git clone https://${{ secrets.USERNAME }}":${{ secrets.GITTOKEN }}"@github.com/Kurata-Yui/Bot3-Jar -b ci-bot Bobo
               mv Bobo/*.jar .; rm -rf Bobo
               mv *.jar BoboBot.jar
 
@@ -55,8 +55,8 @@ jobs:
               rm -rf configs/config.prop
               cd configs
               touch config.prop
-              echo "bot-token=${{ secrets.TOKEN }}" >> "config.prop"
-              echo "bot-username=mitsukinasebot" >> "config.prop"
+              echo "bot-token=${{ secrets.TOKEN_2 }}" >> "config.prop"
+              echo "bot-username=yumigsis_cibot" >> "config.prop"
               echo "bot-master=946757865" >> "config.prop"
               echo "bot-sf-pass=${{ secrets.SF_PASS }}" >> sf-creds.config
               echo "bot-sf-proj=yumi-project" >> sf-creds.config
@@ -92,6 +92,6 @@ jobs:
               send \"yukosky\r\"
               expect \"Password\"
               send \"${{ secrets.PASSWORD }}\r\"
-              expect \"master -> master\"
+              expect \"master-2 -> master-2\"
               set timeout -10
               interact"
