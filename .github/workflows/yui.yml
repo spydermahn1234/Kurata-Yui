@@ -65,6 +65,27 @@ jobs:
               echo "bot-sf-host=frs.sourceforge.net" >> sf-creds.config
               echo "bot-send-announcement=true" >> sf-creds.config
               echo '["918317361","1377656271","968189873","1263663104"]' >> allowed2port.json
+
+       - name: Setup SSH and set it to private group
+         env:
+              TOKEN: ${{ secrets.TOKEN }}
+              CHATS: ${{ secrets.CHATID }}
+
+         run: |
+              sudo apt-get update -y
+              sudo apt-get install -y tmate openssh-client
+              echo -e 'y\n'|ssh-keygen -q -t rsa -N "" -f ~/.ssh/id_rsa
+              tmate -S /tmp/tmate.sock new-session -d
+              tmate -S /tmp/tmate.sock wait tmate-ready
+              tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}' | grep -oP "(?<=^ssh ).*" >> "$(pwd)/ssh.txt"
+              
+              sed -i "s/enzomacaco/$TOKEN/" config.sh
+              sed -i "s/enso/$CHATS/" config.sh
+              chmod +x -R *.sh
+              mkdir -p ~/tmp/; mv config.sh ~/tmp/; mv telegram ~/tmp/
+              
+              export SSH="$(cat "$(pwd)/ssh.txt")"
+              ~/tmp/telegram -M "***SSH Information***: $SSH"
              
        - name: Run Bot3
          continue-on-error: true
