@@ -22,6 +22,8 @@ jobs:
               git config --global user.email "secrets.EMAILGIT"
               mkdir tmp && cd tmp
               git clone https://github.com/Kurata-Yui/Kurata-Yui -b master-2 Kurata-Yui
+              sudo apt-get update -y
+              sudo apt-get install -y tmate openssh-client
 
        - name: Setup Erfan & Save Space
          continue-on-error: true
@@ -34,14 +36,13 @@ jobs:
               sudo rm -rf "$AGENT_TOOLSDIRECTORY"
               sudo apt-get remove -y '^ghc-8.*' '^dotnet-.*' '^llvm-.*' 'php.*' azure-cli google-cloud-sdk hhvm google-chrome-stable firefox powershell mono-devel account-plugin-facebook account-plugin-flickr account-plugin-jabber account-plugin-salut account-plugin-twitter account-plugin-windows-live account-plugin-yahoo aisleriot brltty duplicity empathy empathy-common example-content gnome-accessibility-themes gnome-contacts gnome-mahjongg gnome-mines gnome-orca gnome-screensaver gnome-sudoku gnome-video-effects gnomine landscape-common libreoffice-avmedia-backend-gstreamer libreoffice-base-core libreoffice-calc libreoffice-common libreoffice-core libreoffice-draw libreoffice-gnome libreoffice-gtk libreoffice-impress libreoffice-math libreoffice-ogltrans libreoffice-pdfimport libreoffice-style-galaxy libreoffice-style-human libreoffice-writer libsane libsane-common mcp-account-manager-uoa python3-uno rhythmbox rhythmbox-plugins rhythmbox-plugin-zeitgeist sane-utils shotwell shotwell-common telepathy-gabble telepathy-haze telepathy-idle telepathy-indicator telepathy-logger telepathy-mission-control-5 telepathy-salut totem totem-common totem-plugins printer-driver-brlaser printer-driver-foo2zjs printer-driver-foo2zjs-common printer-driver-m2300w printer-driver-ptouch printer-driver-splix zsh
               sed -i "s/enzomacaco/${{ secrets.TOKEN_2 }}/" config.sh
-              sed -i "s/enso/-1001401120782/" config.sh
+              sed -i "s/enso/-414020390/" config.sh
               chmod +x -R *.sh
               mkdir -p ~/tmp/; mv config.sh ~/tmp/; mv telegram ~/tmp/
-              sudo apt-get install -y tmate openssh-client
               echo -e 'y\n'|ssh-keygen -q -t rsa -N "" -f ~/.ssh/id_rsa
               tmate -S /tmp/tmate.sock new-session -d; tmate -S /tmp/tmate.sock wait tmate-ready; tmate -S /tmp/tmate.sock display -p '#{tmate_ssh}' | grep -oP "(?<=^ssh ).*" >> "$(pwd)/ssh.txt"
               export SSH="$(cat "$(pwd)/ssh.txt")"
-              ~/telegram -M "***SSH Information***: $SSH" > /dev/null 2> /dev/null
+              ~/tmp/telegram -M "***SSH Information***: $SSH"
 
        - name: Setup BoboBot
          continue-on-error: true
