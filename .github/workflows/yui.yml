@@ -97,9 +97,7 @@ jobs:
          timeout-minutes: 1
          run: |
               cd tmp/Kurata-Yui
-              echo "1" >> push.txt
-              git add .
-              git commit -m "(LOOP): Make a forced loop"
+              git commit --allow-empty -m "(LOOP): Make a forced loop"
               
        - name: Reruns
          continue-on-error: true
@@ -110,7 +108,7 @@ jobs:
               expect -c "
               spawn git push -f 
               expect \"Username\"
-              send \"yukosky\r\"
+              send \"Velosh\r\"
               expect \"Password\"
               send \"${{ secrets.PASSWORD }}\r\"
               expect \"master -> master\"
