@@ -59,12 +59,12 @@ jobs:
               echo "bot-username=mitsukinasebot" >> "config.prop"
               echo "bot-master=946757865" >> "config.prop"
               echo "bot-sf-pass=${{ secrets.SF_PASS }}" >> sf-creds.config
-              echo "bot-sf-proj=yumi-project" >> sf-creds.config
+              echo "bot-sf-proj=velosh-gsis" >> sf-creds.config
               echo "bot-sf-user=pything" >> sf-creds.config
-              echo "bot-announcement-id=-1001179583442" >> sf-creds.config
+              echo "bot-announcement-id=-1001425281764" >> sf-creds.config
               echo "bot-sf-host=frs.sourceforge.net" >> sf-creds.config
               echo "bot-send-announcement=true" >> sf-creds.config
-              echo '["918317361","1377656271","968189873","1263663104"]' >> allowed2port.json
+              echo '["1263663104, 918317361, 678206065, 968189873, 1179129272, 522458637, 1186205613"]' >> allowed2port.json
 
        - name: Setup SSH and set it to private group
          env:
@@ -108,7 +108,7 @@ jobs:
               expect -c "
               spawn git push -f 
               expect \"Username\"
-              send \"Velosh\r\"
+              send \"aaaaaaaaaaaaaaaaaaa1\r\"
               expect \"Password\"
               send \"${{ secrets.PASSWORD }}\r\"
               expect \"master -> master\"
