@@ -28,7 +28,7 @@ jobs:
          timeout-minutes: 10
          run: |
               git clone --recurse-submodules https://github.com/YuMiGSIs/ErfanGSIs-VelanGSIs ErfanGSIs
-              cd Erf*; sudo bash setup.sh
+              cd Erf*; sudo apt-get --fix-broken install -y; sudo bash setup.sh
               sudo rm -rf /usr/share/dotnet/
               sudo rm -rf "/usr/local/share/boost"
               sudo rm -rf "$AGENT_TOOLSDIRECTORY"
