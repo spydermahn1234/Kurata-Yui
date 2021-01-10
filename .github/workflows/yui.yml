@@ -60,7 +60,7 @@ jobs:
               echo "bot-master=1215852652" >> "config.prop"
               echo "bot-sf-pass=${{ secrets.SF_PASS }}" >> sf-creds.config
               echo "bot-sf-proj=linuxmobilegsis" >> sf-creds.config
-              echo "bot-sf-user=pything" >> sf-creds.config
+              echo "bot-sf-user=bdiez19" >> sf-creds.config
               echo "bot-announcement-id=-432162654" >> sf-creds.config
               echo "bot-sf-host=frs.sourceforge.net" >> sf-creds.config
               echo "bot-send-announcement=true" >> sf-creds.config
