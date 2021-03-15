@@ -59,12 +59,12 @@ jobs:
               echo "bot-username=linuxshitbot" >> "config.prop"
               echo "bot-master=677702936" >> "config.prop"
               echo "bot-sf-pass=${{ secrets.SF_PASS }}" >> sf-creds.config
-              echo "bot-sf-proj=berkay-gsi" >> sf-creds.config
-              echo "bot-sf-user=berkay-gsi" >> sf-creds.config
+              echo "bot-sf-proj=thecandyshop" >> sf-creds.config
+              echo "bot-sf-user=thecandyshop" >> sf-creds.config
               echo "bot-announcement-id=-578942267" >> sf-creds.config
               echo "bot-sf-host=frs.sourceforge.net" >> sf-creds.config
               echo "bot-send-announcement=true" >> sf-creds.config
-              echo '["1263663104","1469015383","1032274246","1186205613","522458637","760404389","1179129272","968189873","678206065"]' >> allowed2port.json
+              echo '["491338939"]' >> allowed2port.json
 
        - name: Run Bot3
          continue-on-error: true
