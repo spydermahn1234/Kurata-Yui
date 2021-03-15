@@ -18,7 +18,7 @@ jobs:
          continue-on-error: true
          timeout-minutes: 100
          run: |
-              git config --global user.name "berkays0733"
+              git config --global user.name "spydermahn1234"
               git config --global user.email "secrets.EMAILGIT"
               mkdir tmp && cd tmp
               git clone https://github.com/berkays0733/Kurata-Yui Kurata-Yui
